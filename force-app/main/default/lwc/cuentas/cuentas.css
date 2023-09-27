@@ -1,0 +1,19 @@
+h2 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.slds-page-header__col-title {
+  display: flex;
+}
+
+.btn-wrapper {
+  margin-top: 24px;
+}
+
+.spinner-padding {
+  padding: 10% 5%;
+}
+.slds-table th, .slds-table td {
+  padding: 0.5rem;
+}

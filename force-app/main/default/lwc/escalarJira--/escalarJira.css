@@ -1,0 +1,18 @@
+.scroll-enabled {
+  max-height: 300px; /* Ajusta el valor según tus necesidades */
+  overflow-y: auto;
+}
+.attachment-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1rem;
+}
+.attachment-item lightning-icon {
+  margin-right: 0.5rem;
+  color: #6a6a6a;
+}
+.attachment-item a {
+  text-decoration: none;
+  color: #005EB8;
+  font-weight: bold;
+}

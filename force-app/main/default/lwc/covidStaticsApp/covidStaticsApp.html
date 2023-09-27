@@ -1,0 +1,71 @@
+<template>
+  <lightning-card>
+    <div class="slds-page-header" slot="title">
+      <div class="slds-page-header__row">
+        <div class="slds-page-header__col-title">
+            <div class="slds-media slds-m-right_x-small">            
+                <lightning-icon
+                icon-name="standard:dashboard"
+                alternative-text="Dashboard"
+                title="Dashboard">
+                </lightning-icon>
+            </div>
+            <div class="slds-media__body">
+              <div class="slds-page-header__name">
+                <div class="slds-page-header__name-title">
+                <h1>
+                    <span class="slds-page-header__title slds-truncate" title="Covid19 Statics">Contactos - {lastCasesConfirmed} Ejemplos</span>
+                </h1>
+                </div>
+              </div>
+              <p class="slds-page-header__name-meta">Airpak • {startDateTitle} to {endDateTitle}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="slds-p-horizontal_small slds-align_absolute-center" style="display: flex;">
+      <lightning-input 
+        type="date" 
+        name="startDate"
+        label="Fecha Inicial"
+        class="slds-m-right_x-small"
+        value={search_date.startDate}
+        onchange={updateDateValues}>
+      </lightning-input>
+      <lightning-input 
+        type="date" 
+        name="endDate"
+        label="Fecha Final"
+        value={search_date.endDate}
+        onchange={updateDateValues}>
+      </lightning-input>
+      <div class="btn-wrapper">
+        <lightning-button
+          label="Buscar"
+          title="buscar"
+          class="slds-m-left_x-small"
+          onclick={handleSearchStatics}>
+        </lightning-button>
+      </div>
+    </div>
+    <div class="slds-p-vertical_medium slds-p-horizontal_small">
+      <div if:true={showSpinner}
+         class="slds-spinner_inline spinner-padding">
+         <lightning-spinner
+           alternative-text="Loading"
+           size="medium"
+           variant="brand"
+         >
+         </lightning-spinner>
+      </div>
+      <template if:false={showSpinner}>
+        <lightning-datatable 
+          key-field="id" 
+          data={data} 
+          columns={columns}
+          hide-checkbox-column>
+        </lightning-datatable>
+      </template>
+    </div>
+  </lightning-card>
+</template>

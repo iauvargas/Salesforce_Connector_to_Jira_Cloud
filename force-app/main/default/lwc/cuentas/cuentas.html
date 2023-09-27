@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Cuentas Relacionadas al Caso">
+        <div class="slds-m-around_medium">
+            <template if:true={cuentasRelacionadas}>
+                <ul>
+                    <template for:each={cuentasRelacionadas} for:item="cuenta">
+                        <li key={cuenta.Id}>{cuenta.Name}</li>
+                    </template>
+                </ul>
+            </template>
+            <template if:false={cuentasRelacionadas}>
+                <p>No se encontraron cuentas relacionadas.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

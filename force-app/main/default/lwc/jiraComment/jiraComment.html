@@ -1,0 +1,23 @@
+<template>
+<div class="slds-page-header" if:false={Escalar}>
+  <lightning-card>
+    <div>
+    </div>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_12-of-12 slds-p-around_medium">
+            <div class="slds-box slds-box_x-small">
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" for="comment-text">Nuevo Comentario</label>
+                    <div class="sld_control">
+                    <textarea id="comment-text" class="slds-textarea" value={newComment} onchange={handleCommentChange}></textarea>
+                    </div>
+                    </div>
+             <div class="slds-form-element slds-m-top_small">
+                <lightning-button label="Enviar Comentario" onclick={sendComment}></lightning-button>
+             </div>
+          </div>
+        </div>
+       </div>
+    </lightning-card>
+</div>
+</template>

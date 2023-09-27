@@ -1,0 +1,49 @@
+<template>
+    <lightning-card>
+        <div class="slds-page-header" slot="title">
+          <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media slds-m-right_x-small">            
+                    <lightning-icon
+                    icon-name="standard:dashboard"
+                    alternative-text="Dashboard"
+                    title="Dashboard">
+                    </lightning-icon>
+                </div>
+                <div class="slds-media__body">
+                  <div class="slds-page-header__name">
+                    <div class="slds-page-header__name-title">
+                    <h1>
+                        <span class="slds-page-header__title slds-truncate" title="Covid19 Statics">Cuentas - {lastCasesConfirmed} totales</span>
+                    </h1>
+                    </div>
+                  </div>
+                  <p class="slds-page-header__name-meta">Airpak • {startDateTitle} to {endDateTitle}</p>
+                </div>
+            </div>
+          </div>
+        </div>
+        <template if:true={accounts}>
+          <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_fixed-layout">
+          <thead>
+            <tr class="slds-text-title_caps">
+                <th scope="col">Nombre</th>
+                <th scope="col">Teléfono</th>
+            </tr>
+          </thead>
+            <tbody>
+              <template for:each={accounts} for:item="account">
+                <tr key={account.Id}>
+                  <td data-label="Nombre">{account.Name}</td>
+                  <td data-label="Teléfono">{account.Phone}</td>
+                    </tr>
+              </template>
+            </tbody>
+          </table>
+          <lightning-button-group>
+            <lightning-button label="Anterior" onclick={goToPreviousPage} disabled={isFirstPage}></lightning-button>
+            <lightning-button label="Siguiente" onclick={goToNextPage} disabled={isLastPage}></lightning-button>
+        </lightning-button-group>
+      </template>
+    </lightning-card>
+</template>

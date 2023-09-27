@@ -1,0 +1,104 @@
+<template>
+  <div if:true={showTramite}>
+    <lightning-card title="Áreas a las que se escaló el caso" icon-name="custom:custom20">
+        <div class="slds-grid slds-grid_vertical-align-end numbers-container">
+        </div>
+    </lightning-card>
+    <lightning-card if:true={showAprobar}>
+        <div 
+            class="slds-spinner_inline spinner-padding">
+            <lightning-spinner
+                alternative-text="Loading"
+                size="medium"
+                variant="brand"
+                >
+            </lightning-spinner>
+        </div>
+    </lightning-card>
+    <lightning-card if:true={showRespuesta} data-id="Area" title={cardTitle} icon-name="standard:investment_account">
+        <div class="slds-text-align_center">
+            <button class="slds-button slds-button_success" onclick={handleConfirm}>Aceptar</button>
+            <button class="slds-button slds-button_destructive" onclick={handleCancel}>omitir</button>
+        </div>
+    </lightning-card>
+    <lightning-card if:true={showCerrado}>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_12-of-12 slds-p-around_medium">
+                <div class="slds-box slds-box_x-small">
+                    <lightning-card title="Estatus de Escalaciones" icon-name="standard:product_required">
+                        <div class="attachment-list">
+                            <h1>
+                                <span class="slds-page-header__title slds-truncate">&nbsp;&nbsp;&nbsp;Etapa de Escalaciones Finalizada</span>
+                            </h1>
+                        </div>
+                    </lightning-card>   
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+    <lightning-card if:true={showFinish}>
+        <div 
+            class="slds-spinner_inline spinner-padding">
+            <lightning-spinner
+                alternative-text="Loading"
+                size="medium"
+                variant="brand"
+                >
+            </lightning-spinner>
+        </div>
+    </lightning-card>
+    <lightning-card if:true={showEscalar}>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_12-of-12 slds-p-around_medium">
+                <div class="slds-box slds-box_x-small">
+                    <lightning-card title="Gestión Externa" icon-name="standard:investment_account">
+                        <div class="attachment-list">
+                            <button class="slds-button slds-button_brand" onclick={CerrarEscalado}>Finalizar</button>
+                        </div>
+                    </lightning-card>   
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+    <lightning-card if:true={showComment}>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_12-of-12 slds-p-around_medium">
+                <div class="slds-box slds-box_x-small chat-container">
+                    <div class="chat-container">
+                    <lightning-card title="Comentarios de Jira" icon-name="standard:feedback"></lightning-card>
+                    </div>
+                </div>
+                <div class="slds-box slds-box_x-small chat-container">
+                    <div if:true={showSpinner}
+                        class="slds-spinner_inline spinner-padding">
+                        <lightning-spinner
+                            alternative-text="Loading"
+                            size="medium"
+                            variant="brand"
+                            >
+                        </lightning-spinner>
+                    </div>
+                        <div class="comments-container"></div>
+                </div>
+                <div class="slds-grid dummyControlsContainer slds-form" data-aura-rendered-by="2164:0">
+                    <input type="text" id="comment-text" placeholder="Escribe un mensaje..." onchange={handleCommentChange} value={newComment} class="slds-input" />
+                    <input type="file" id="file-input" accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png,.xlsx" onchange={fileInputHandler} multiple style="display:none;" />
+                    <label for="file-input" class="slds-button slds-button_brand" disabled={isButtonDisablede}>Attachment</label>
+                    <button class="slds-button slds-button_brand" onclick={sendComment} disabled={isButtonDisabled}>Enviar</button>
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_12-of-12 slds-p-around_medium">
+                <div class="slds-box slds-box_x-small">
+                    <lightning-card title="Ver Archivos de jira" icon-name="custom:custom19">
+                        <div class="attachment-list">
+                            
+                        </div>
+                    </lightning-card>   
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+  </div>
+</template>

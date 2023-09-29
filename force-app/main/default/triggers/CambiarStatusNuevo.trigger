@@ -1,5 +1,11 @@
-trigger CambiarStatusNuevo on Case (before insert) {
-	/*List<String> clientEmails = new List<String>();
+trigger CambiarStatusNuevo on Case(before insert) {
+  for (Case newCase : Trigger.new) {
+    if (newCase.Id == null) {
+      newCase.Helpshift__Status_Detail__c = 'Open';
+      newCase.OwnerId = '00G8H000002MzQgUAK';
+    }
+  }
+  /*List<String> clientEmails = new List<String>();
 
     for (Case newCase : Trigger.new) {
         clientEmails.add(newCase.Correo_cliente__c);
